@@ -16,16 +16,10 @@ Your app owns primary login, sessions, and JWTs. This library only handles the *
 
 ## Install
 
-**From npm** (when published):
+Coming soon on npm. For now, clone and link locally:
 
 ```bash
-npm install totp-auth
-```
-
-**From this repo** (local development):
-
-```bash
-git clone <your-repo-url>
+git clone https://github.com/ameyaaklekar/totp-auth-service.git
 cd topt-auth-service
 npm install
 npm run build

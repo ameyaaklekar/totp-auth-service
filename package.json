@@ -1,0 +1,71 @@
+{
+  "name": "totp-auth",
+  "version": "0.1.0",
+  "description": "Self-hostable TOTP MFA library for Node.js — enrollment, verification, and recovery codes",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./crypto": {
+      "import": {
+        "types": "./dist/crypto.d.ts",
+        "default": "./dist/crypto.js"
+      },
+      "require": {
+        "types": "./dist/crypto.d.cts",
+        "default": "./dist/crypto.cjs"
+      }
+    },
+    "./testing": {
+      "import": {
+        "types": "./dist/testing.d.ts",
+        "default": "./dist/testing.js"
+      },
+      "require": {
+        "types": "./dist/testing.d.cts",
+        "default": "./dist/testing.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "demo": "tsx try-flow.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "totp",
+    "mfa",
+    "2fa",
+    "authenticator",
+    "otp"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@types/qrcode": "^1.5.5",
+    "qrcode": "^1.5.4",
+    "tsup": "^8.5.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  }
+}

@@ -1,4 +1,6 @@
-# totp-auth
+# totp-auth-service
+
+[![npm version](https://img.shields.io/npm/v/totp-auth-service.svg)](https://www.npmjs.com/package/totp-auth-service)
 
 Self-hostable TOTP MFA library for Node.js. Handles enrollment, verification, and single-use recovery codes — not full authentication (no sessions or JWTs).
 

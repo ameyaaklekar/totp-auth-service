@@ -1,4 +1,4 @@
-/** Main package entry (`totp-auth`) — service, storage types, errors, and enums. */
+/** Main package entry (`totp-auth-service`) — service, storage types, errors, and enums. */
 export { TOTPService } from './service/TOTPService.js'
 export type {
   ConfirmResult,

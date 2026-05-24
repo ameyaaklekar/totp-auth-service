@@ -1,4 +1,4 @@
-/** Public crypto subpath (`totp-auth/crypto`) — no storage or service dependencies. */
+/** Public crypto subpath (`totp-auth-service/crypto`) — no storage or service dependencies. */
 export { generateSecret } from './secret.js'
 export { buildOtpAuthUri } from './uri.js'
 export type { BuildOtpAuthUriOptions } from './uri.js'

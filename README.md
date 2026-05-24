@@ -16,11 +16,15 @@ Your app owns primary login, sessions, and JWTs. This library only handles the *
 
 ## Install
 
-Coming soon on npm. For now, clone and link locally:
+```bash
+npm install totp-auth-service
+```
+
+### Develop from a git clone
 
 ```bash
 git clone https://github.com/ameyaaklekar/totp-auth-service.git
-cd topt-auth-service
+cd totp-auth-service
 npm install
 npm run build
 ```
@@ -30,7 +34,7 @@ Link into another project while developing:
 ```bash
 npm link
 # in your app directory:
-npm link totp-auth
+npm link totp-auth-service
 ```
 
 ---
@@ -43,7 +47,7 @@ Instantiate once per process (or per request with a shared adapter) in your Node
 
 ```typescript
 // lib/totp.ts
-import { TOTPService, TotpAlgorithm } from 'totp-auth'
+import { TOTPService, TotpAlgorithm } from 'totp-auth-service'
 import { myStorageAdapter } from './totp-storage.js'
 
 export const totp = new TOTPService({
@@ -77,7 +81,7 @@ The library does not ship database adapters. Implement the interface for Postgre
 - Serialize concurrent writes per `userId` in your adapter (DB locks or atomic updates)
 
 ```typescript
-import type { StorageAdapter, TOTPEnrollment, RecoveryCode } from 'totp-auth'
+import type { StorageAdapter, TOTPEnrollment, RecoveryCode } from 'totp-auth-service'
 
 export const myStorageAdapter: StorageAdapter = {
   async saveEnrollment(enrollment) { /* upsert */ },
@@ -91,7 +95,7 @@ export const myStorageAdapter: StorageAdapter = {
 }
 ```
 
-Use `MemoryAdapter` from `totp-auth/testing` only in tests — not in production.
+Use `MemoryAdapter` from `totp-auth-service/testing` only in tests — not in production.
 
 ### 3. Expose HTTP routes (your app)
 
@@ -135,7 +139,7 @@ export async function POST(req: Request) {
 }
 ```
 
-Map thrown errors to HTTP status + JSON `{ code: 'ENROLLMENT_NOT_FOUND' }` using `TOTPErrorCode` from `totp-auth`.
+Map thrown errors to HTTP status + JSON `{ code: 'ENROLLMENT_NOT_FOUND' }` using `TOTPErrorCode` from `totp-auth-service`.
 
 ### 4. React (or any frontend)
 
@@ -175,9 +179,9 @@ Full API details: [Requirements.md](./Requirements.md).
 ## Quick start (Node script / tests)
 
 ```typescript
-import { TOTPService, EnrollmentStatus, TOTPErrorCode } from 'totp-auth'
-import { generateCode } from 'totp-auth/crypto'
-import { MemoryAdapter } from 'totp-auth/testing'
+import { TOTPService, EnrollmentStatus, TOTPErrorCode } from 'totp-auth-service'
+import { generateCode } from 'totp-auth-service/crypto'
+import { MemoryAdapter } from 'totp-auth-service/testing'
 
 const totp = new TOTPService({
   storage: new MemoryAdapter(),
@@ -226,13 +230,11 @@ npm run demo
 
 | Import | Purpose |
 |--------|---------|
-| `totp-auth` | `TOTPService`, `StorageAdapter`, errors, enums |
-| `totp-auth/crypto` | `generateSecret`, `buildOtpAuthUri`, `generateCode`, `verifyCode` |
-| `totp-auth/testing` | `MemoryAdapter` (tests only) |
+| `totp-auth-service` | `TOTPService`, `StorageAdapter`, errors, enums |
+| `totp-auth-service/crypto` | `generateSecret`, `buildOtpAuthUri`, `generateCode`, `verifyCode` |
+| `totp-auth-service/testing` | `MemoryAdapter` (tests only) |
 
 **Public enums:** `EnrollmentStatus`, `TotpAlgorithm`, `TOTPErrorCode`.
-
----
 
 ## License
 

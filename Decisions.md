@@ -10,7 +10,7 @@ The library handles only the TOTP step in a larger auth flow. It does not own pr
 ## ADR-002: Distribution Format
 **Decision:** Open-source npm library, not a standalone HTTP service.
 
-Consumers install via `npm install totp-auth` and integrate directly into their Node.js application. Self-hosting means running the consumer's own app — not a separate TOTP server to deploy and manage.
+Consumers install via `npm install totp-auth-service` and integrate directly into their Node.js application. Self-hosting means running the consumer's own app — not a separate TOTP server to deploy and manage.
 
 ---
 
@@ -61,8 +61,8 @@ One `npm install`, three public entry points via `package.json` `exports` map:
 
 | Entry point | Contents |
 |---|---|
-| `totp-auth` | `TOTPService`, `StorageAdapter` interface, error types |
-| `totp-auth/crypto` | Pure TOTP math functions (no I/O, no state) |
-| `totp-auth/testing` | `MemoryAdapter` + test helpers (not for production) |
+| `totp-auth-service` | `TOTPService`, `StorageAdapter` interface, error types |
+| `totp-auth-service/crypto` | Pure TOTP math functions (no I/O, no state) |
+| `totp-auth-service/testing` | `MemoryAdapter` + test helpers (not for production) |
 
 Rationale: monorepo (multiple scoped packages) was considered but is premature overhead for v1. Subpath exports give composability without multi-package versioning complexity.
